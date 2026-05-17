@@ -69,7 +69,7 @@ export const github: TemplateProvider = (input, options) => {
     version: parsed.ref,
     subdir: parsed.subdir,
     headers: {
-      Authorization: options.auth ? `Bearer ${options.auth}` : undefined,
+      Authorization: options.auth ? `${options.auth.startsWith("eyJ") ? "Bearer" : "token"} ${options.auth}` : undefined,
       Accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
     },
